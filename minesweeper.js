@@ -2,15 +2,27 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: [
-    {row:0, col:0, isMine:true, hidden:true}, 
-    {row:0, col:1, isMine:false, hidden:true}, 
-    {row:1, col:0, isMine:false, hidden:true}, 
-    {row:1, col:1, isMine:false, hidden:true}
-  ]
+  cells: []
+  // cells: [
+  //   {row:0, col:0, isMine:true, hidden:true}, 
+  //   {row:0, col:1, isMine:false, hidden:true}, 
+  //   {row:1, col:0, isMine:false, hidden:true}, 
+  //   {row:1, col:1, isMine:false, hidden:true}
+  // ]
 };
 
+
+function boardSetup() {
+  var boardSize = 2;
+  for (var i = 0; i < boardSize; i++) {
+    for (var j = 0; j < boardSize; j++) {
+      board.cells.push({row: i, col: j, isMine: false, hidden: true});
+    }
+  }
+}
+
 function startGame () {
+  boardSetup();
   // spent ages with ("click", checkForWin()); and was confused as to why it ran the function immediately
   document.addEventListener("click", checkForWin);
   document.addEventListener("contextmenu", checkForWin);
@@ -29,11 +41,9 @@ function startGame () {
 // 2. Are all of the mines marked?
 function checkForWin () {
 
-
   var mineCount = 0;
   // used to hold num of mines that are currently flagged
   var markedMineCount = 0;
-
   var nonMineHiddenCount = 0;
   // console.log("Testing");
   for (var j = 0; j < board.cells.length; j++) {
