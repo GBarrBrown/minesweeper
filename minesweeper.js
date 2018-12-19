@@ -13,10 +13,21 @@ var board = {
 
 
 function boardSetup() {
-  var boardSize = 2;
+  // boardSize cannot be greater than 6
+  var boardSize = 6;
   for (var i = 0; i < boardSize; i++) {
     for (var j = 0; j < boardSize; j++) {
       board.cells.push({row: i, col: j, isMine: false, hidden: true});
+    }
+  }
+
+  var numMines = boardSize;
+  var placedMines = 0;
+  while (placedMines < numMines) {
+    var randomNum = Math.floor(Math.random()* board.cells.length)
+    if (board.cells[randomNum].isMine == false) {
+      board.cells[randomNum].isMine = true;
+      placedMines++;
     }
   }
 }
