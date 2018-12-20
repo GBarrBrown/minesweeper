@@ -18,7 +18,8 @@ function boardSetup() {
   // boardSize cannot be greater than 6
   // if this is their first time opening the page this session defaults to 2x2
   if (!sessionStorage.hasOwnProperty("storedBoardSize")) {
-    sessionStorage.setItem("storedBoardSize", "2");
+    // this sets the valu to its default, (only if this is their first time visiting this session and no other value is stored in this place)
+    sessionStorage.setItem("storedBoardSize", "4");
   }
   console.log(sessionStorage.getItem("storedBoardSize"));
   var boardSize = sessionStorage.getItem("storedBoardSize");
