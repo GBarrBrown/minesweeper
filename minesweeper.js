@@ -14,7 +14,13 @@ var board = {
 
 function boardSetup() {
   // boardSize cannot be greater than 6
-  var boardSize = 6;
+  // if this is their first time opening the page this session defaults to 2x2
+  if (!sessionStorage.hasOwnProperty("storedBoardSize")) {
+    sessionStorage.setItem("storedBoardSize", "2");
+  }
+  console.log(sessionStorage.getItem("storedBoardSize"));
+  var boardSize = sessionStorage.getItem("storedBoardSize");
+  // var boardSize = 6;
   for (var i = 0; i < boardSize; i++) {
     for (var j = 0; j < boardSize; j++) {
       board.cells.push({row: i, col: j, isMine: false, hidden: true});
@@ -97,4 +103,3 @@ function countSurroundingMines (cell) {
   }
   return surroundingCount;
 }
-

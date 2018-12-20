@@ -11,5 +11,17 @@
     <div id="message"></div>
     <div id="notes"></div>
     <div class="board"></div>
+    <br>
+    <div class="playAgain">
+      <button onclick="location.reload()">Play Again</button>
+    </div>
+    <br>
+    <div class="chooseBoardSize">
+      <button type="button" value="2" onclick="sessionStorage.setItem('storedBoardSize', '2'); location.reload()">2x2</button>
+      <button type="button" value="3" onclick="sessionStorage.setItem('storedBoardSize', '3'); location.reload()">3x3</button>
+      <button type="button" value="4" onclick="sessionStorage.setItem('storedBoardSize', '4'); location.reload()">4x4</button>
+      <button type="button" value="5" onclick="sessionStorage.setItem('storedBoardSize', '5'); location.reload()">5x5</button>
+      <button type="button" value="6" onclick="sessionStorage.setItem('storedBoardSize', '6'); location.reload()">6x6</button>
+    </div>
   </body>
 </html>
