@@ -21,7 +21,7 @@ function boardSetup() {
     // this sets the valu to its default, (only if this is their first time visiting this session and no other value is stored in this place)
     sessionStorage.setItem("storedBoardSize", "4");
   }
-  console.log(sessionStorage.getItem("storedBoardSize"));
+  console.log("Current Board Size: " + sessionStorage.getItem("storedBoardSize"));
   var boardSize = sessionStorage.getItem("storedBoardSize");
   // var boardSize = 6;
   for (var i = 0; i < boardSize; i++) {
