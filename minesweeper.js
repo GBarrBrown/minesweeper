@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
+var soundPlayed = false;
+
 // Define your `board` object here!
 var board = {
   cells: []
@@ -75,7 +77,18 @@ function checkForWin () {
     }
   }
   if (mineCount == markedMineCount && nonMineHiddenCount == 0) {
+    
     lib.displayMessage("You Win!")
+    if (!soundPlayed) {
+      document.getElementById("applause").play();
+      soundPlayed = true;
+    }
+
+    
+  }
+  if (document.getElementById("message").firstChild.innerHTML == "BOOM!" && !soundPlayed) {
+    document.getElementById("ding").play();
+    soundPlayed = true;
   }
 
   // You can use this function call to declare a winner (once you've
@@ -103,3 +116,4 @@ function countSurroundingMines (cell) {
   }
   return surroundingCount;
 }
+
